@@ -1,19 +1,19 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Assets/starfield.webm" type="VideoStream" id=1]
+[ext_resource path="res://Enemies2.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Background.gd" type="Script" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/level.png" type="Texture" id=4]
+[ext_resource path="res://Assets/level.png" type="Texture" id=3]
+[ext_resource path="res://Assets/starfield.webm" type="VideoStream" id=4]
 [ext_resource path="res://Level/Level.gd" type="Script" id=5]
-[ext_resource path="res://Assets/BebasNeueRegular.otf" type="DynamicFontData" id=6]
-[ext_resource path="res://Enemies2.gd" type="Script" id=7]
-[ext_resource path="res://Enemy/Enemies.gd" type="Script" id=8]
-[ext_resource path="res://HUD.gd" type="Script" id=9]
+[ext_resource path="res://Enemy/Enemies.gd" type="Script" id=6]
+[ext_resource path="res://Assets/BebasNeueRegular.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://HUD.gd" type="Script" id=8]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [node name="Game" type="Node2D"]
 
@@ -22,7 +22,7 @@ margin_left = -23.0
 margin_top = -16.0
 margin_right = 1053.0
 margin_bottom = 609.0
-stream = ExtResource( 1 )
+stream = ExtResource( 4 )
 autoplay = true
 script = ExtResource( 2 )
 __meta__ = {
@@ -31,16 +31,16 @@ __meta__ = {
 
 [node name="Player_area" type="Node2D" parent="."]
 
-[node name="Player" parent="Player_area" instance=ExtResource( 3 )]
+[node name="Player" parent="Player_area" instance=ExtResource( 9 )]
 
 [node name="Enemies" type="Node2D" parent="."]
-script = ExtResource( 8 )
+script = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="Enemies"]
 autostart = true
 
 [node name="Enemies2" type="Node2D" parent="."]
-script = ExtResource( 7 )
+script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="Enemies2"]
 autostart = true
@@ -58,7 +58,7 @@ __meta__ = {
 
 [node name="level" type="Sprite" parent="Level"]
 position = Vector2( 1.5, 1.8 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level"]
 position = Vector2( 1.5, 1.8 )
@@ -67,7 +67,7 @@ polygon = PoolVector2Array( 29.5, -40.8, 29.5, -39.4, 41.5, -28.4, 41.5, -26.1, 
 [node name="HUD" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
